@@ -7,41 +7,33 @@ public class GeneratorPrimes
         if (maxValue < 2)
             return Array.Empty<int>();
 
-        // Объявления
-        int initialSize = maxValue + 1; // Размер массива
+        int initialSize = maxValue + 1;
         Boolean[] isPrime = new bool[initialSize];
-
-        //Инициализировать массив значением true
         Array.Fill(isPrime, true);
-
-        //Удалить числа, заведомо не являющиеся простыми
         isPrime[0] = isPrime[1] = false;
 
-        //Отсев
         for (int number = 2; number < Math.Sqrt(initialSize) + 1; number++)
         {
-            if (isPrime[number]) //Если элемент i не вычеркнут, вычеркнуть кратные ему
+            if (isPrime[number])
             {
                 for (int multiple = 2 * number; multiple < initialSize; multiple += number)
-                    isPrime[multiple] = false; //Кратные числа не являются простыми
+                    isPrime[multiple] = false;
             }
         }
 
-        //Сколько простых чисел осталось?
         int primesSize = 0;
         for (int number = 0; number < initialSize; number++)
         {
             if (isPrime[number])
-                primesSize++; //Приращение счетчика
+                primesSize++;
         }
 
         int[] primes = new int[primesSize];
-        //Переместить простые числа в результат
         for (int number = 0, j = 0; number < initialSize; number++)
         {
-            if (isPrime[number]) //Если простое
+            if (isPrime[number])
                 primes[j++] = number;
         }
-        return primes; //Вернуть простые числа
+        return primes;
     }
 }
