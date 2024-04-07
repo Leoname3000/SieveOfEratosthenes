@@ -20,19 +20,12 @@ public class GeneratorPrimes
             }
         }
 
-        int primesSize = 0;
+        List<int> primes = new List<int>();
         for (int number = 0; number <= maxValue; number++)
         {
             if (isPrime[number])
-                primesSize++;
+                primes.Add(number);
         }
-
-        int[] primes = new int[primesSize];
-        for (int number = 0, j = 0; number <= maxValue; number++)
-        {
-            if (isPrime[number])
-                primes[j++] = number;
-        }
-        return primes;
+        return primes.ToArray();
     }
 }
