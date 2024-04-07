@@ -12,8 +12,7 @@ public class GeneratorPrimes
         Boolean[] isPrime = new bool[initialSize];
 
         //Инициализировать массив значением true
-        for (int number = 0; number < initialSize; number++)
-            isPrime[number] = true;
+        Array.Fill(isPrime, true);
 
         //Удалить числа, заведомо не являющиеся простыми
         isPrime[0] = isPrime[1] = false;
